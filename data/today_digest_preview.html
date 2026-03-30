@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="sk">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Today's Digest Preview</title>
+  <style>
+    :root {
+      --bg: #0f1220;
+      --panel: #1a1f33;
+      --panel-alt: #202741;
+      --border: #313a5d;
+      --text: #edf2ff;
+      --muted: #a9b3d6;
+      --accent: #73e0a9;
+      --code-bg: #111627;
+      --shadow: 0 18px 60px rgba(0, 0, 0, 0.35);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Segoe UI", "Trebuchet MS", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top right, rgba(115, 224, 169, 0.14), transparent 30%),
+        radial-gradient(circle at top left, rgba(84, 125, 255, 0.20), transparent 32%),
+        linear-gradient(180deg, #0b0e19, #13182a 55%, #0e1120);
+      min-height: 100vh;
+    }
+
+    .shell {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 36px 20px 48px;
+    }
+
+    .hero {
+      background: linear-gradient(160deg, rgba(32, 39, 65, 0.96), rgba(18, 24, 41, 0.96));
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 28px;
+      box-shadow: var(--shadow);
+    }
+
+    .eyebrow {
+      display: inline-block;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: #08111b;
+      background: var(--accent);
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-weight: 700;
+    }
+
+    h1 {
+      margin: 16px 0 10px;
+      font-size: clamp(28px, 4vw, 46px);
+      line-height: 1;
+      letter-spacing: -0.04em;
+    }
+
+    .meta {
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.6;
+      max-width: 760px;
+    }
+
+    .grid {
+      display: grid;
+      gap: 18px;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      margin-top: 24px;
+    }
+
+    .card {
+      background: linear-gradient(180deg, rgba(26, 31, 51, 0.95), rgba(19, 24, 42, 0.95));
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 22px;
+      box-shadow: var(--shadow);
+    }
+
+    .card-tag {
+      color: var(--muted);
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .card h2 {
+      margin: 34px 0 14px;
+      font-size: 24px;
+      line-height: 1.15;
+    }
+
+    .card h2:first-of-type {
+      margin-top: 0;
+    }
+
+    .card p {
+      margin: 0 0 12px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .card ul {
+      margin: 0;
+      padding-left: 20px;
+    }
+
+    .card li {
+      margin: 0 0 10px;
+      line-height: 1.55;
+    }
+
+    code {
+      font-family: "Cascadia Code", "Consolas", monospace;
+      background: var(--code-bg);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 8px;
+      padding: 2px 6px;
+      font-size: 0.95em;
+      color: #c9f5ff;
+    }
+
+    a {
+      color: #9bd5ff;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .footer {
+      margin-top: 18px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <section class="hero">
+      <div class="eyebrow">Live News</div>
+      <h1>Iks News</h1>
+      <div class="meta">
+        Preview date: 2026-03-30 in Europe/Bratislava.<br>
+        Generated from the current Python formatter. Refreshed at 2026-03-30 20:54.
+      </div>
+    </section>
+    <section class="grid">
+      <article class="card"><div class="card-tag">Discord message 1</div>
+<h2>[30-03-2026]</h2>
+<h2>Prehľad</h2>
+<p>Vzhľadom na napätie v Strednom východe, čínski dodávatelia varujú pred rastom cien, zatiaľ čo Fed zvažuje ďalšie kroky v reakcii na geopolitické šoky. Na akciovom trhu sa zotavuje Wall Street po predchádzajúcom výpredaji a spoločnosť Verizon očakáva výsledky, zatiaľ čo Bitcoin reaguje na eskaláciu konfliktu v Iraku a zaznamenal výrazný odliv z ETF fondov.</p>
+<h2>Makro / Ekonomika</h2>
+<ul>
+<li>Čínski dodávatelia varujú pred vyššími cenami pre USA kvôli uzavretiu Hormuzského prielivia</li>
+<li>Powell tvrdí, že inflácia je pod kontrolou a nie je potrebné zvyšovať úrokové sadzby po ropnom šoku</li>
+<li>Stredovýchodné ropné krajiny predávajú americké štátne dlhopisy kvôli potrebe likvidity</li>
+<li>Powell upozorňuje, že riziká pre ekonomiku môžu viesť k zníženiu alebo zvýšeniu úrokových sadzieb</li>
+</ul>
+<h2>Akciové správy</h2>
+<ul>
+<li>Wall Street sa zotavuje po predchádzajúcom výpredaji s dôrazom na konflikt na Blízkom východe</li>
+<li>Akcie Boston Scientific klesajú na dvojročné minimum kvôli negatívnym reakciám na súdne dáta</li>
+<li>Verizon oznámi výsledky za 27. apríl 2026</li>
+<li>Nové pravidlá Nasdaq umožnia rýchle vstupy nových spoločností do hlavného indexu</li>
+</ul>
+<h2>Indexy</h2>
+<ul>
+<li><em>S&amp;P 500</em>: <strong>-0.44%</strong> | 6,340.80</li>
+<li><em>Nasdaq</em>: <strong>-0.85%</strong> | 20,769.40</li>
+<li><em>MSCI World</em>: <strong>-0.30%</strong> | 174.90</li>
+<li><em>Europe 600</em>: <strong>+0.94%</strong> | 580.73</li>
+<li><em>Bitcoin</em>: <strong>+0.78%</strong> | 66,468.47</li>
+</ul>
+<h2>Najväčšie rasty</h2>
+<ul>
+<li><code>UTHR</code> <em>United Therapeutics Corporation</em>: <strong>+12.83%</strong> | $589.90</li>
+<li><code>BBWI</code> <em>Bath &amp; Body Works, Inc.</em>: <strong>+10.65%</strong> | $18.59</li>
+<li><code>AGRO</code> <em>Adecoagro S.A.</em>: <strong>+10.11%</strong> | $15.47</li>
+<li><code>CLMT</code> <em>Calumet, Inc</em>: <strong>+9.54%</strong> | $35.12</li>
+<li><code>ADV</code> <em>Advantage Solutions Inc.</em>: <strong>+7.82%</strong> | $27.57</li>
+</ul>
+<h2>Najväčšie poklesy</h2>
+<ul>
+<li><code>ALMS</code> <em>Alumis Inc.</em>: <strong>-17.60%</strong> | $20.43</li>
+<li><code>LASR</code> <em>nLIGHT, Inc.</em>: <strong>-16.42%</strong> | $53.76</li>
+<li><code>AAOI</code> <em>Applied Optoelectronics, Inc.</em>: <strong>-15.49%</strong> | $83.00</li>
+<li><code>FRMI</code> <em>Fermi Inc.</em>: <strong>-14.97%</strong> | $5.25</li>
+<li><code>APLD</code> <em>Applied Digital Corporation</em>: <strong>-15.11%</strong> | $20.17</li>
+</ul>
+</article>
+    </section>
+    <div class="footer">
+      This file is regenerated each time you open the preview launcher.
+    </div>
+  </main>
+</body>
+</html>

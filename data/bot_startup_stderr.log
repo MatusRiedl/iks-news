@@ -1,0 +1,8 @@
+2026-03-30 18:45:05,377 WARNING discord.client: PyNaCl is not installed, voice will NOT be supported
+2026-03-30 18:45:05,377 WARNING discord.client: davey is not installed, voice will NOT be supported
+2026-03-30 18:45:05,379 WARNING discord.ext.commands.bot: Privileged message content intent is missing, commands may not work as expected.
+2026-03-30 18:45:05,379 INFO discord.client: logging in using static token
+2026-03-30 18:45:06,922 INFO market_digest_bot: Synced 4 slash commands to test guild 391557032743927809
+2026-03-30 18:45:07,138 INFO market_digest_bot: Cleared global slash commands while test guild sync is enabled (0 remaining)
+2026-03-30 18:45:07,718 INFO discord.gateway: Shard ID None has connected to Gateway (Session ID: db46cb1f1afda0b6230381b8b67ab883).
+2026-03-30 18:45:09,720 INFO market_digest_bot: Logged in as iks-news#0367 (1487930189739724860) across 1 guild(s)
