@@ -40,21 +40,19 @@ class MarketDigestBot(commands.Bot):
         await self.store.load()
         await self.add_cog(DigestAdminCog(self))
 
+        synced = await self.tree.sync()
+        LOGGER.info("Synced %s global slash commands", len(synced))
+
         if self.config.test_guild_id:
             guild = discord.Object(id=self.config.test_guild_id)
             self.tree.clear_commands(guild=guild)
             self.tree.copy_global_to(guild=guild)
             guild_synced = await self.tree.sync(guild=guild)
-            LOGGER.info("Synced %s slash commands to test guild %s", len(guild_synced), self.config.test_guild_id)
-
-            # When a test guild is configured, keep the command picker clean by
-            # removing any previously registered global copies of the same commands.
-            self.tree.clear_commands(guild=None)
-            global_synced = await self.tree.sync()
-            LOGGER.info("Cleared global slash commands while test guild sync is enabled (%s remaining)", len(global_synced))
-        else:
-            synced = await self.tree.sync()
-            LOGGER.info("Synced %s global slash commands", len(synced))
+            LOGGER.info(
+                "Synced %s slash commands to test guild %s for faster development updates",
+                len(guild_synced),
+                self.config.test_guild_id,
+            )
 
         self.scheduler.start()
 
@@ -156,6 +154,8 @@ class DigestAdminCog(commands.Cog):
         self.bot = bot
 
     @app_commands.command(name="news_setup", description="Configure the daily news post for this server.")
+    @app_commands.guild_only()
+    @app_commands.default_permissions(manage_guild=True)
     @app_commands.describe(channel="Channel that should receive the report.")
     @app_commands.describe(time_24h="Time in 24-hour format, for example 08:30 or 17:45.")
     @app_commands.describe(timezone="IANA timezone, for example America/New_York.")
@@ -164,7 +164,6 @@ class DigestAdminCog(commands.Cog):
         app_commands.Choice(name="Sloven\u010dina", value="sk"),
         app_commands.Choice(name="English", value="en"),
     ])
-    @app_commands.checks.has_permissions(manage_guild=True)
     async def news_setup(
         self,
         interaction: discord.Interaction,
@@ -205,6 +204,7 @@ class DigestAdminCog(commands.Cog):
         )
 
     @app_commands.command(name="news_status", description="Show the current news schedule for this server.")
+    @app_commands.guild_only()
     async def news_status(self, interaction: discord.Interaction) -> None:
         assert interaction.guild_id is not None
         setting = await self.bot.store.get(interaction.guild_id)
@@ -226,7 +226,8 @@ class DigestAdminCog(commands.Cog):
         )
 
     @app_commands.command(name="news_now", description="Post today's news immediately.")
-    @app_commands.checks.has_permissions(manage_guild=True)
+    @app_commands.guild_only()
+    @app_commands.default_permissions(manage_guild=True)
     async def news_now(self, interaction: discord.Interaction) -> None:
         assert interaction.guild_id is not None
         await interaction.response.defer(ephemeral=True, thinking=True)
@@ -260,7 +261,8 @@ class DigestAdminCog(commands.Cog):
         await interaction.followup.send("News posted.", ephemeral=True)
 
     @app_commands.command(name="news_disable", description="Disable the daily news post for this server.")
-    @app_commands.checks.has_permissions(manage_guild=True)
+    @app_commands.guild_only()
+    @app_commands.default_permissions(manage_guild=True)
     async def news_disable(self, interaction: discord.Interaction) -> None:
         assert interaction.guild_id is not None
         await self.bot.store.disable(interaction.guild_id)
@@ -280,6 +282,8 @@ async def _handle_app_command_error(
 ) -> None:
     if isinstance(error, app_commands.errors.MissingPermissions):
         message = "You need `Manage Server` permission to use that command."
+    elif isinstance(error, app_commands.errors.NoPrivateMessage):
+        message = "This command can only be used in a server."
     else:
         message = f"Command failed: `{error}`"
 
