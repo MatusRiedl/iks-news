@@ -86,8 +86,8 @@ Notes:
 
 - `applications.commands` is an OAuth scope, not a bot permission.
 - The user installing the app into a server needs `Manage Server`.
-- `/news_setup`, `/news_now`, and `/news_disable` default to `Manage Server`, but a server admin can delegate them to a specific user or role in `Server Settings -> Integrations -> Iks News`.
-- `/news_status` currently does not require `Manage Server`.
+- `/news_setup`, `/news_now`, and `/news_disable` default to `Manage Channels`, but a server admin can delegate them to a specific user or role in `Server Settings -> Integrations -> Iks News`.
+- `/news_status` currently does not require special permissions.
 - The bot does not require privileged intents for this project.
 
 There is also a ready-made invite link file in the repo root:

@@ -155,7 +155,7 @@ class DigestAdminCog(commands.Cog):
 
     @app_commands.command(name="news_setup", description="Configure the daily news post for this server.")
     @app_commands.guild_only()
-    @app_commands.default_permissions(manage_guild=True)
+    @app_commands.default_permissions(manage_channels=True)
     @app_commands.describe(channel="Channel that should receive the report.")
     @app_commands.describe(time_24h="Time in 24-hour format, for example 08:30 or 17:45.")
     @app_commands.describe(timezone="IANA timezone, for example America/New_York.")
@@ -227,7 +227,7 @@ class DigestAdminCog(commands.Cog):
 
     @app_commands.command(name="news_now", description="Post today's news immediately.")
     @app_commands.guild_only()
-    @app_commands.default_permissions(manage_guild=True)
+    @app_commands.default_permissions(manage_channels=True)
     async def news_now(self, interaction: discord.Interaction) -> None:
         assert interaction.guild_id is not None
         await interaction.response.defer(ephemeral=True, thinking=True)
@@ -262,7 +262,7 @@ class DigestAdminCog(commands.Cog):
 
     @app_commands.command(name="news_disable", description="Disable the daily news post for this server.")
     @app_commands.guild_only()
-    @app_commands.default_permissions(manage_guild=True)
+    @app_commands.default_permissions(manage_channels=True)
     async def news_disable(self, interaction: discord.Interaction) -> None:
         assert interaction.guild_id is not None
         await self.bot.store.disable(interaction.guild_id)
@@ -281,7 +281,7 @@ async def _handle_app_command_error(
     error: app_commands.AppCommandError,
 ) -> None:
     if isinstance(error, app_commands.errors.MissingPermissions):
-        message = "You need `Manage Server` permission to use that command."
+        message = "You need `Manage Channels` permission to use that command."
     elif isinstance(error, app_commands.errors.NoPrivateMessage):
         message = "This command can only be used in a server."
     else:
